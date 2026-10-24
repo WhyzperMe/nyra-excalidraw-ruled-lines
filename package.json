@@ -21,8 +21,8 @@
     "ui:preview": "node scripts/ui-preview.mjs ui-preview-out"
   },
   "dependencies": {
-    "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
