@@ -1,0 +1,63 @@
+{
+  "name": "nyra-excalidraw-ruled-lines",
+  "version": "1.4.8",
+  "private": true,
+  "description": "Non-destructive ruled, grid and dot paper for Excalidraw with draggable persistent responsive controls, per-drawing overrides and optional object-aware guide masking.",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "clean": "node scripts/clean.mjs",
+    "dev": "node esbuild.config.mjs",
+    "build": "npm run verify:static && npm run typecheck && node esbuild.config.mjs production",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src tests --max-warnings=0",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "verify:static": "node scripts/verify-static.mjs",
+    "check": "npm run verify:static && npm run format:check && npm run typecheck && npm run lint && npm run test",
+    "version": "node scripts/version-bump.mjs && git add manifest.json versions.json src/core/constants.ts",
+    "ui:preview": "node scripts/ui-preview.mjs ui-preview-out"
+  },
+  "dependencies": {
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "@types/node": "^22.15.17",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "esbuild": "^0.28.2",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "globals": "^17.6.0",
+    "obsidian": "1.13.1",
+    "prettier": "^3.6.2",
+    "typescript": "5.8.3",
+    "typescript-eslint": "^8.59.1",
+    "vitest": "^3.2.4"
+  },
+  "engines": {
+    "node": ">=18.18.0"
+  },
+  "license": "MIT",
+  "author": "NYRA",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WhyzperMe/nyra-excalidraw-ruled-lines.git"
+  },
+  "bugs": {
+    "url": "https://github.com/WhyzperMe/nyra-excalidraw-ruled-lines/issues"
+  },
+  "homepage": "https://github.com/WhyzperMe/nyra-excalidraw-ruled-lines#readme",
+  "keywords": [
+    "obsidian",
+    "obsidian-plugin",
+    "excalidraw",
+    "ruled-paper",
+    "notebook",
+    "ipad"
+  ]
+}

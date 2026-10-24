@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 5,
+  "enabled": true,
+  "paperMode": "ruled",
+  "preset": "school",
+  "customSpacing": 34,
+  "gridSpacingX": 34,
+  "linkGridSpacing": true,
+  "lineThickness": 1.25,
+  "dotSize": 1.5,
+  "opacity": 0.2,
+  "lineColor": "#7f9fbd",
+  "protectInk": true,
+  "hideUnderObjects": false,
+  "followCanvas": true,
+  "marginEnabled": false,
+  "marginOffset": 64,
+  "marginThickness": 1,
+  "marginColor": "#c88484",
+  "showFloatingControls": true,
+  "showStatusBar": true,
+  "dockVisibility": "always",
+  "dockCollapsed": false,
+  "profiles": [],
+  "fileOverrides": {},
+  "dockPositions": {
+    "desktop": {
+      "x": 1,
+      "y": 0
+    },
+    "compact": {
+      "x": 1,
+      "y": 0.12
+    }
+  }
+}

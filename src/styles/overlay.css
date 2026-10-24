@@ -1,0 +1,137 @@
+.excalidraw.nyra-ruled-lines-host-positioned {
+  position: relative;
+}
+
+.nyra-ruled-lines-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  pointer-events: none !important;
+  opacity: 0;
+  visibility: hidden;
+  background: transparent !important;
+  transition: opacity 120ms ease;
+  contain: layout paint size;
+}
+
+.nyra-ruled-lines-overlay.is-enabled:not(.is-suspended) {
+  opacity: 1;
+  visibility: visible;
+}
+
+.nyra-ruled-lines-overlay.is-suspended {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+.nyra-paper-pattern {
+  --nyra-paper-spacing-x: 34px;
+  --nyra-paper-spacing-y: 34px;
+  --nyra-paper-offset-x: 0px;
+  --nyra-paper-offset-y: 0px;
+  --nyra-paper-line-thickness: 1px;
+  --nyra-paper-dot-size: 1.5px;
+  --nyra-paper-color: rgba(127, 159, 189, 0.24);
+
+  position: absolute;
+  inset: 0;
+  pointer-events: none !important;
+  background-color: transparent !important;
+  background-repeat: repeat;
+}
+
+.nyra-paper-pattern[data-paper-mode="ruled"] {
+  background-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent calc(var(--nyra-paper-spacing-y) - var(--nyra-paper-line-thickness)),
+    var(--nyra-paper-color) calc(var(--nyra-paper-spacing-y) - var(--nyra-paper-line-thickness)),
+    var(--nyra-paper-color) var(--nyra-paper-spacing-y)
+  );
+  background-size: 100% var(--nyra-paper-spacing-y);
+  background-position: 0 var(--nyra-paper-offset-y);
+}
+
+.nyra-paper-pattern[data-paper-mode="grid"] {
+  background-image:
+    linear-gradient(
+      to right,
+      transparent 0,
+      transparent calc(var(--nyra-paper-spacing-x) - var(--nyra-paper-line-thickness)),
+      var(--nyra-paper-color) calc(var(--nyra-paper-spacing-x) - var(--nyra-paper-line-thickness)),
+      var(--nyra-paper-color) var(--nyra-paper-spacing-x)
+    ),
+    linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent calc(var(--nyra-paper-spacing-y) - var(--nyra-paper-line-thickness)),
+      var(--nyra-paper-color) calc(var(--nyra-paper-spacing-y) - var(--nyra-paper-line-thickness)),
+      var(--nyra-paper-color) var(--nyra-paper-spacing-y)
+    );
+  background-size:
+    var(--nyra-paper-spacing-x) 100%,
+    100% var(--nyra-paper-spacing-y);
+  background-position:
+    var(--nyra-paper-offset-x) 0,
+    0 var(--nyra-paper-offset-y);
+}
+
+.nyra-paper-pattern[data-paper-mode="dots"] {
+  background-image: radial-gradient(
+    circle at 0 0,
+    var(--nyra-paper-color) 0,
+    var(--nyra-paper-color) calc(var(--nyra-paper-dot-size) / 2),
+    transparent calc(var(--nyra-paper-dot-size) / 2 + 0.35px)
+  );
+  background-size: var(--nyra-paper-spacing-x) var(--nyra-paper-spacing-y);
+  background-position: var(--nyra-paper-offset-x) var(--nyra-paper-offset-y);
+}
+
+.nyra-paper-pattern[data-paper-mode="blank"] {
+  background-image: none !important;
+}
+
+.nyra-paper-margin-line {
+  --nyra-margin-x: 64px;
+  --nyra-margin-thickness: 1px;
+  --nyra-margin-color: rgba(200, 132, 132, 0.24);
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--nyra-margin-x);
+  width: var(--nyra-margin-thickness);
+  transform: translateX(-50%);
+  background: var(--nyra-margin-color);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none !important;
+}
+
+.nyra-paper-margin-line.is-enabled {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Object-aware rendering switches the visual guide layer to a transparent
+   canvas so guides can be erased beneath images and filled scene objects.
+   The ordinary CSS pattern remains the fast path when the option is disabled. */
+.nyra-paper-occlusion-canvas {
+  position: absolute;
+  inset: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+  pointer-events: none !important;
+  background: transparent !important;
+}
+
+.nyra-ruled-lines-overlay.is-object-aware .nyra-paper-pattern,
+.nyra-ruled-lines-overlay.is-object-aware .nyra-paper-margin-line {
+  visibility: hidden !important;
+}
+
+.nyra-ruled-lines-overlay.is-object-aware .nyra-paper-occlusion-canvas {
+  display: block;
+}

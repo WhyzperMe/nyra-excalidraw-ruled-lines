@@ -1,0 +1,9 @@
+node_modules/
+main.js
+styles.css
+release/
+*.log
+.DS_Store
+.idea/
+.vscode/
+ui-preview-out/

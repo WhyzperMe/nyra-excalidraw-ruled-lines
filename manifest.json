@@ -1,0 +1,10 @@
+{
+  "id": "nyra-excalidraw-ruled-lines",
+  "name": "Nyra Excalidraw Ruled Lines",
+  "version": "1.4.8",
+  "minAppVersion": "1.6.0",
+  "description": "Responsive non-destructive notebook paper for Excalidraw with draggable persistent controls, per-drawing overrides and optional object-aware guide masking.",
+  "author": "NYRA",
+  "isDesktopOnly": false,
+  "authorUrl": "https://github.com/WhyzperMe"
+}

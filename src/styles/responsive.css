@@ -1,0 +1,455 @@
+.nyra-ruled-controls[data-layout="compact"] {
+  height: 54px !important;
+}
+
+.nyra-ruled-controls[data-layout="compact"] .nyra-ruled-lines-toolbar {
+  inset: 0 0 auto auto !important;
+  width: 100% !important;
+  height: 54px !important;
+  padding: 5px !important;
+  border-radius: 14px !important;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.nyra-ruled-controls[data-layout="compact"] .nyra-ruled-trigger {
+  height: 42px !important;
+}
+.nyra-ruled-controls[data-layout="compact"] .nyra-ruled-icon-button {
+  width: 42px !important;
+  min-width: 42px !important;
+  height: 42px !important;
+  flex-basis: 42px !important;
+}
+
+.nyra-ruled-controls[data-layout="compact"] .nyra-ruled-panel {
+  border-radius: 16px !important;
+  padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px)) !important;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.nyra-ruled-controls[data-layout="compact"][data-dock-visibility="auto"]:not(.is-open)
+  .nyra-ruled-lines-toolbar {
+  opacity: 1;
+  transform: none;
+}
+
+@media (pointer: coarse) {
+  .nyra-ruled-icon-button {
+    flex-basis: 44px !important;
+    width: 44px !important;
+    min-width: 44px !important;
+    height: 44px !important;
+  }
+  .nyra-ruled-trigger {
+    min-height: 44px !important;
+  }
+  .nyra-ruled-segment {
+    min-height: 42px !important;
+  }
+  .nyra-ruled-swatch {
+    min-height: 36px !important;
+  }
+  .nyra-ruled-text-button {
+    min-height: 44px !important;
+  }
+  .nyra-ruled-toggle-row,
+  .nyra-select-field {
+    min-height: 62px !important;
+  }
+  .nyra-ruled-range-control,
+  .nyra-ruled-range-control input[type="range"] {
+    height: 34px !important;
+  }
+  .nyra-ruled-range-control {
+    touch-action: pan-y !important;
+  }
+  .nyra-dock-drag-handle {
+    flex-basis: 32px !important;
+    width: 32px !important;
+    min-width: 32px !important;
+    height: 42px !important;
+  }
+  .nyra-select-trigger {
+    min-height: 44px !important;
+  }
+  .nyra-select-option {
+    min-height: 44px !important;
+  }
+  .nyra-ruled-controls[data-dock-visibility="auto"]:not(.is-open) .nyra-ruled-lines-toolbar {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .nyra-ruled-slider-grid,
+  .nyra-margin-inline-grid,
+  .nyra-settings-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .nyra-ruled-panel-footer {
+    grid-template-columns: 1fr !important;
+  }
+  .nyra-settings-field {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .nyra-settings-hero {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .nyra-settings-card {
+    padding: 12px;
+  }
+  .nyra-profile-create,
+  .nyra-profile-row {
+    grid-template-columns: 1fr;
+  }
+  .nyra-profile-actions {
+    flex-wrap: wrap;
+  }
+  .nyra-profile-actions button {
+    flex: 1 1 130px;
+  }
+  .nyra-select-field {
+    align-items: stretch !important;
+    flex-direction: column !important;
+  }
+  .nyra-select-control-wrap {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nyra-ruled-lines-overlay,
+  .nyra-ruled-switch-track,
+  .nyra-ruled-switch-track::after,
+  .nyra-ruled-trigger-chevron,
+  .nyra-ruled-lines-toolbar,
+  .nyra-ruled-controls {
+    transition: none !important;
+  }
+}
+
+/* Touch hardening: fast taps without browser double-tap zoom delays while
+   preserving native range gestures and vertical panel/listbox scrolling. */
+@media (pointer: coarse) {
+  .nyra-ruled-controls button,
+  .nyra-ruled-controls [role="button"],
+  .nyra-ruled-controls .nyra-ruled-trigger,
+  .nyra-ruled-controls .nyra-ruled-toggle-row {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .nyra-ruled-panel {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: auto;
+  }
+
+  .nyra-select-popover {
+    -webkit-overflow-scrolling: touch;
+    max-width: calc(100vw - 16px) !important;
+    max-width: calc(100dvw - 16px) !important;
+  }
+}
+
+/* iOS/WebKit may zoom the visual viewport when focusing editable controls below
+   16 px. Keep touch text inputs/selects at 16 px to avoid disruptive zooming. */
+@media (pointer: coarse) {
+  .nyra-ruled-controls .nyra-ruled-hex-input,
+  .nyra-select-trigger,
+  .nyra-select-option,
+  .nyra-settings-screen input[type="text"] {
+    font-size: 16px !important;
+  }
+
+  .nyra-settings-screen button,
+  .nyra-settings-screen input[type="text"],
+  .nyra-select-trigger,
+  .nyra-settings-color-picker,
+  .nyra-settings-swatches button {
+    min-height: 44px !important;
+  }
+
+  .nyra-settings-swatches button {
+    width: 44px !important;
+    min-width: 44px !important;
+  }
+
+  .nyra-ruled-controls .nyra-ruled-native-color,
+  .nyra-ruled-controls .nyra-inline-color-field input[type="color"] {
+    width: 44px !important;
+    min-width: 44px !important;
+    height: 44px !important;
+  }
+}
+
+/* Keep the close affordance reachable while scrolling a long compact/mobile
+   sheet. Desktop panels retain the lighter non-sticky header. */
+.nyra-ruled-controls[data-layout="compact"] .nyra-ruled-panel-header {
+  position: sticky !important;
+  z-index: 3 !important;
+  top: -12px !important;
+  margin-top: -12px !important;
+  padding-top: 12px !important;
+  background: var(--nr-bg-raised) !important;
+}
+
+/* Narrow-phone density: preserve the complete dock without clipping while
+   keeping primary actions comfortably tappable. The full summary is replaced
+   with a shorter label and the redundant quick-spacing action is moved into
+   the panel on very narrow screens. */
+@media (max-width: 420px) {
+  .nyra-ruled-controls[data-layout="compact"] {
+    height: 50px !important;
+  }
+
+  .nyra-ruled-controls[data-layout="compact"] .nyra-ruled-lines-toolbar {
+    height: 50px !important;
+    padding: 4px !important;
+    gap: 2px !important;
+    border-radius: 13px !important;
+  }
+
+  .nyra-ruled-controls[data-layout="compact"] .nyra-ruled-trigger {
+    height: 40px !important;
+    min-height: 40px !important;
+    padding-inline: 7px !important;
+  }
+
+  .nyra-ruled-controls[data-layout="compact"] .nyra-ruled-icon-button {
+    width: 40px !important;
+    min-width: 40px !important;
+    max-width: 40px !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    max-height: 40px !important;
+    flex-basis: 40px !important;
+  }
+
+  .nyra-ruled-controls[data-layout="compact"] .nyra-summary-full {
+    display: none !important;
+  }
+
+  .nyra-ruled-controls[data-layout="compact"] .nyra-summary-compact {
+    display: block !important;
+    font-size: 10.75px !important;
+    letter-spacing: -0.01em !important;
+  }
+
+  .nyra-ruled-controls[data-layout="compact"] .nyra-ruled-trigger-icon,
+  .nyra-ruled-controls[data-layout="compact"] .nyra-ruled-trigger-chevron {
+    flex-basis: 15px !important;
+    width: 15px !important;
+    height: 15px !important;
+  }
+
+  .nyra-ruled-controls[data-layout="compact"] .nyra-ruled-trigger-icon {
+    margin-right: 5px !important;
+  }
+
+  .nyra-ruled-controls[data-layout="compact"] .nyra-ruled-trigger-chevron {
+    margin-left: 5px !important;
+  }
+
+  .nyra-ruled-controls[data-layout="compact"] .nyra-ruled-panel {
+    padding: 10px !important;
+    border-radius: 14px !important;
+    scrollbar-gutter: auto !important;
+  }
+
+  .nyra-ruled-controls[data-layout="compact"] .nyra-ruled-panel-header {
+    top: -10px !important;
+    margin-top: -10px !important;
+    padding-top: 10px !important;
+  }
+
+  .nyra-ruled-controls[data-layout="compact"] .nyra-ruled-section-label {
+    margin-top: 11px !important;
+  }
+
+  .nyra-ruled-controls[data-layout="compact"] .nyra-ruled-toggle-row,
+  .nyra-ruled-controls[data-layout="compact"] .nyra-select-field,
+  .nyra-ruled-controls[data-layout="compact"] .nyra-ruled-range-field,
+  .nyra-ruled-controls[data-layout="compact"] .nyra-scope-card,
+  .nyra-ruled-controls[data-layout="compact"] .nyra-ruled-appearance-card {
+    border-radius: 10px !important;
+  }
+}
+
+@media (max-width: 340px) {
+  .nyra-ruled-controls[data-layout="compact"] .nyra-quick-cycle {
+    display: none !important;
+  }
+
+  .nyra-ruled-controls[data-layout="compact"] .nyra-ruled-trigger {
+    padding-inline: 6px !important;
+  }
+
+  .nyra-ruled-controls[data-layout="compact"] .nyra-summary-compact {
+    font-size: 10.25px !important;
+  }
+}
+
+@media (max-width: 285px) {
+  .nyra-ruled-controls[data-layout="compact"] .nyra-ruled-trigger-icon {
+    display: none !important;
+  }
+
+  .nyra-ruled-controls[data-layout="compact"] .nyra-ruled-trigger-chevron {
+    margin-left: 3px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .nyra-ruled-controls[data-layout="compact"] .nyra-ruled-toggle-row,
+  .nyra-ruled-controls[data-layout="compact"] .nyra-select-field {
+    min-height: 56px !important;
+    padding: 8px 9px !important;
+    gap: 9px !important;
+  }
+
+  .nyra-ruled-controls[data-layout="compact"] .nyra-scope-card,
+  .nyra-ruled-controls[data-layout="compact"] .nyra-ruled-range-field,
+  .nyra-ruled-controls[data-layout="compact"] .nyra-ruled-appearance-card,
+  .nyra-ruled-controls[data-layout="compact"] .nyra-inline-color-field {
+    padding: 8px 9px !important;
+  }
+
+  .nyra-ruled-controls[data-layout="compact"] .nyra-ruled-field-title {
+    font-size: 11px !important;
+  }
+
+  .nyra-ruled-controls[data-layout="compact"] .nyra-ruled-field-hint,
+  .nyra-ruled-controls[data-layout="compact"] .nyra-ruled-panel-subtitle {
+    font-size: 10px !important;
+    line-height: 1.3 !important;
+  }
+
+  .nyra-ruled-controls[data-layout="compact"] .nyra-ruled-segmented {
+    margin-top: 7px !important;
+  }
+
+  .nyra-ruled-controls[data-layout="compact"] .nyra-ruled-range-header {
+    margin-bottom: 6px !important;
+  }
+
+  .nyra-ruled-controls[data-layout="compact"] .nyra-ruled-preview {
+    height: 48px !important;
+    margin-top: 8px !important;
+  }
+}
+
+/* Density also follows the actual Excalidraw pane width. This covers iPad
+   Split View / Stage Manager and narrow desktop panes where the OS viewport is
+   wide but the drawing surface itself is phone-sized. */
+.nyra-ruled-controls[data-layout="compact"]:is(
+    [data-compact-density="narrow"],
+    [data-compact-density="tiny"],
+    [data-compact-density="micro"]
+  ) {
+  height: 50px !important;
+}
+
+.nyra-ruled-controls[data-layout="compact"]:is(
+    [data-compact-density="narrow"],
+    [data-compact-density="tiny"],
+    [data-compact-density="micro"]
+  )
+  .nyra-ruled-lines-toolbar {
+  height: 50px !important;
+  padding: 4px !important;
+  gap: 2px !important;
+  border-radius: 13px !important;
+}
+
+.nyra-ruled-controls[data-layout="compact"]:is(
+    [data-compact-density="narrow"],
+    [data-compact-density="tiny"],
+    [data-compact-density="micro"]
+  )
+  .nyra-ruled-trigger {
+  height: 40px !important;
+  min-height: 40px !important;
+  padding-inline: 7px !important;
+}
+
+.nyra-ruled-controls[data-layout="compact"]:is(
+    [data-compact-density="narrow"],
+    [data-compact-density="tiny"],
+    [data-compact-density="micro"]
+  )
+  .nyra-ruled-icon-button {
+  width: 40px !important;
+  min-width: 40px !important;
+  max-width: 40px !important;
+  height: 40px !important;
+  min-height: 40px !important;
+  max-height: 40px !important;
+  flex-basis: 40px !important;
+}
+
+.nyra-ruled-controls[data-layout="compact"]:is(
+    [data-compact-density="narrow"],
+    [data-compact-density="tiny"],
+    [data-compact-density="micro"]
+  )
+  .nyra-summary-full {
+  display: none !important;
+}
+
+.nyra-ruled-controls[data-layout="compact"]:is(
+    [data-compact-density="narrow"],
+    [data-compact-density="tiny"],
+    [data-compact-density="micro"]
+  )
+  .nyra-summary-compact {
+  display: block !important;
+  font-size: 10.75px !important;
+  letter-spacing: -0.01em !important;
+}
+
+.nyra-ruled-controls[data-layout="compact"]:is(
+    [data-compact-density="narrow"],
+    [data-compact-density="tiny"],
+    [data-compact-density="micro"]
+  )
+  .nyra-ruled-panel {
+  padding: 10px !important;
+  border-radius: 14px !important;
+  scrollbar-gutter: auto !important;
+}
+
+.nyra-ruled-controls[data-layout="compact"]:is([data-compact-density="tiny"], [data-compact-density="micro"])
+  .nyra-quick-cycle {
+  display: none !important;
+}
+
+.nyra-ruled-controls[data-layout="compact"][data-compact-density="micro"] .nyra-ruled-trigger-icon {
+  display: none !important;
+}
+
+/* Collapsed compact dock: preserve three symmetric 44 px cells on phones,
+   tablets and narrow desktop split panes. The lifecycle width is 146 px,
+   exactly matching the three controls plus compact gaps and padding. */
+.nyra-ruled-controls[data-layout="compact"][data-dock-collapsed="true"] .nyra-ruled-lines-toolbar {
+  gap: 3px !important;
+  padding: 3px !important;
+}
+
+.nyra-ruled-controls[data-layout="compact"][data-dock-collapsed="true"] .nyra-dock-drag-handle,
+.nyra-ruled-controls[data-layout="compact"][data-dock-collapsed="true"] .nyra-ruled-trigger,
+.nyra-ruled-controls[data-layout="compact"][data-dock-collapsed="true"] .nyra-dock-collapse-button {
+  flex: 0 0 44px !important;
+  width: 44px !important;
+  min-width: 44px !important;
+  max-width: 44px !important;
+  height: 42px !important;
+  min-height: 42px !important;
+  max-height: 42px !important;
+  border-radius: 10px !important;
+}

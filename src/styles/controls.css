@@ -1,0 +1,333 @@
+.nyra-ruled-controls {
+  position: fixed !important;
+  z-index: var(--layer-popover, 30) !important;
+  width: 312px;
+  height: 48px;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: var(--nr-fg) !important;
+  font-family: var(
+    --font-interface,
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif
+  ) !important;
+  font-size: 12px !important;
+  line-height: 1.35 !important;
+  user-select: none;
+  pointer-events: none !important;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition:
+    opacity 140ms ease,
+    visibility 140ms ease;
+}
+
+.nyra-ruled-controls.is-hidden,
+.nyra-ruled-controls.is-offscreen,
+.nyra-ruled-controls.is-obscured,
+.nyra-ruled-controls[data-dock-visibility="active"]:not(.is-active-view) {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.nyra-ruled-controls *,
+.nyra-ruled-controls *::before,
+.nyra-ruled-controls *::after {
+  box-sizing: border-box !important;
+}
+
+.nyra-ruled-lines-toolbar {
+  position: absolute !important;
+  right: 0 !important;
+  top: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 4px !important;
+  width: 100% !important;
+  height: 48px !important;
+  padding: 5px !important;
+  border: 1px solid var(--nr-border) !important;
+  border-radius: 14px !important;
+  background: var(--nr-bg-raised) !important;
+  color: var(--nr-fg) !important;
+  box-shadow: var(--nr-shadow) !important;
+  backdrop-filter: blur(18px) saturate(1.08);
+  -webkit-backdrop-filter: blur(18px) saturate(1.08);
+  pointer-events: auto !important;
+  overflow: hidden !important;
+  transform-origin: right top;
+  transition:
+    opacity 140ms ease,
+    transform 140ms ease,
+    width 140ms ease;
+}
+
+.nyra-ruled-controls[data-dock-visibility="auto"]:not(.is-open) .nyra-ruled-lines-toolbar {
+  opacity: 0.42;
+  transform: translateY(-4px) scale(0.985);
+}
+
+.nyra-ruled-controls[data-dock-visibility="auto"]:not(.is-open):hover .nyra-ruled-lines-toolbar,
+.nyra-ruled-controls[data-dock-visibility="auto"]:not(.is-open):focus-within .nyra-ruled-lines-toolbar,
+.nyra-ruled-controls[data-mobile-app="true"] .nyra-ruled-lines-toolbar {
+  opacity: 1;
+  transform: none;
+}
+
+.nyra-ruled-trigger {
+  appearance: none !important;
+  flex: 1 1 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  min-width: 0 !important;
+  height: 36px !important;
+  margin: 0 !important;
+  padding: 0 9px !important;
+  border: 0 !important;
+  border-radius: 9px !important;
+  background: transparent !important;
+  color: var(--nr-fg) !important;
+  font: inherit !important;
+  cursor: pointer !important;
+}
+
+.nyra-ruled-trigger:hover,
+.nyra-ruled-trigger:focus-visible {
+  background: var(--nr-hover) !important;
+}
+
+.nyra-ruled-trigger-icon,
+.nyra-ruled-trigger-chevron {
+  flex: 0 0 17px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 17px !important;
+  height: 17px !important;
+  color: var(--nr-muted) !important;
+  line-height: 0 !important;
+}
+
+.nyra-ruled-trigger-icon {
+  margin-right: 7px !important;
+}
+.nyra-ruled-trigger-chevron {
+  margin-left: 7px !important;
+  transition: transform 120ms ease;
+}
+.nyra-ruled-controls.is-open .nyra-ruled-trigger-chevron {
+  transform: rotate(180deg);
+}
+
+.nyra-ruled-trigger-text {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  color: var(--nr-fg) !important;
+  font-size: 11.5px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  text-align: center !important;
+}
+
+.nyra-toolbar-quick-actions {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 2px !important;
+}
+
+.nyra-dock-drag-handle {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  flex: 0 0 32px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 32px !important;
+  min-width: 32px !important;
+  height: 36px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 8px !important;
+  background: transparent !important;
+  color: var(--nr-subtle) !important;
+  cursor: grab !important;
+  touch-action: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+.nyra-dock-drag-handle:hover,
+.nyra-dock-drag-handle:focus-visible {
+  background: var(--nr-hover) !important;
+  color: var(--nr-fg) !important;
+}
+.nyra-ruled-controls.is-dragging .nyra-dock-drag-handle {
+  cursor: grabbing !important;
+  background: var(--nr-accent-soft) !important;
+  color: var(--nr-accent) !important;
+}
+.nyra-dock-drag-handle svg {
+  width: 15px !important;
+  height: 15px !important;
+}
+
+/* Collapsed dock: three equal visual cells with deterministic spacing.
+   This avoids the cramped/off-center appearance that occurred when the root
+   width was smaller than the actual control hit targets. */
+.nyra-ruled-controls[data-dock-collapsed="true"] .nyra-ruled-lines-toolbar {
+  justify-content: flex-start !important;
+  gap: 3px !important;
+  padding: 4px !important;
+  border-radius: 12px !important;
+}
+.nyra-ruled-controls[data-dock-collapsed="true"] .nyra-dock-drag-handle,
+.nyra-ruled-controls[data-dock-collapsed="true"] .nyra-ruled-trigger,
+.nyra-ruled-controls[data-dock-collapsed="true"] .nyra-dock-collapse-button {
+  flex: 0 0 36px !important;
+  width: 36px !important;
+  min-width: 36px !important;
+  max-width: 36px !important;
+  height: 38px !important;
+  min-height: 38px !important;
+  max-height: 38px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 9px !important;
+  justify-content: center !important;
+}
+.nyra-ruled-controls[data-dock-collapsed="true"] .nyra-ruled-trigger-icon {
+  margin: 0 !important;
+}
+.nyra-ruled-controls[data-dock-collapsed="true"] .nyra-ruled-trigger-text,
+.nyra-ruled-controls[data-dock-collapsed="true"] .nyra-ruled-trigger-chevron,
+.nyra-ruled-controls[data-dock-collapsed="true"] .nyra-toolbar-quick-actions {
+  display: none !important;
+}
+
+.nyra-ruled-panel {
+  position: fixed !important;
+  left: var(--nyra-panel-left, 8px) !important;
+  right: auto !important;
+  top: var(--nyra-panel-anchor-top, 64px) !important;
+  bottom: auto !important;
+  width: var(--nyra-panel-width, 356px) !important;
+  max-width: calc(100vw - 16px) !important;
+  max-height: var(--nyra-panel-max-height) !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  margin: 0 !important;
+  padding: 12px !important;
+  border: 1px solid var(--nr-border-strong) !important;
+  border-radius: 15px !important;
+  background: var(--nr-bg-raised) !important;
+  color: var(--nr-fg) !important;
+  box-shadow: var(--nr-shadow) !important;
+  backdrop-filter: blur(20px) saturate(1.08);
+  -webkit-backdrop-filter: blur(20px) saturate(1.08);
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  pointer-events: auto !important;
+}
+
+.nyra-ruled-controls[data-panel-direction="down"] .nyra-ruled-panel {
+  transform: none !important;
+}
+.nyra-ruled-controls[data-panel-direction="up"] .nyra-ruled-panel {
+  transform: translateY(-100%) !important;
+}
+.nyra-ruled-panel[hidden] {
+  display: none !important;
+}
+
+/* Ultra-slim accent scrollbar. Keep the standardized properties at `auto` so
+   Chromium/Electron does not replace the exact WebKit geometry below with its
+   native `thin` scrollbar (which can reintroduce arrow buttons on some themes). */
+.nyra-ruled-controls .nyra-ruled-panel {
+  scrollbar-width: auto !important;
+  scrollbar-color: auto !important;
+}
+.nyra-ruled-controls .nyra-ruled-panel::-webkit-scrollbar {
+  width: 4px !important;
+  height: 4px !important;
+}
+.nyra-ruled-controls .nyra-ruled-panel::-webkit-scrollbar-track,
+.nyra-ruled-controls .nyra-ruled-panel::-webkit-scrollbar-track-piece {
+  margin: 10px 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.nyra-ruled-controls .nyra-ruled-panel::-webkit-scrollbar-thumb {
+  min-height: 46px;
+  border: 1px solid transparent !important;
+  border-radius: 999px !important;
+  background: var(--nr-scrollbar-thumb) !important;
+  background-clip: padding-box !important;
+  box-shadow: none !important;
+}
+.nyra-ruled-controls .nyra-ruled-panel::-webkit-scrollbar-thumb:hover {
+  background: var(--nr-scrollbar-thumb-hover) !important;
+  background-clip: padding-box !important;
+}
+.nyra-ruled-controls .nyra-ruled-panel::-webkit-scrollbar-thumb:active {
+  background: var(--nr-scrollbar-thumb-active) !important;
+  background-clip: padding-box !important;
+}
+.nyra-ruled-controls .nyra-ruled-panel::-webkit-scrollbar-corner {
+  background: transparent !important;
+}
+/* Chromium/Electron can expose increment/decrement scrollbar buttons depending
+   on the platform/theme. Neutralize every known button form explicitly. */
+.nyra-ruled-controls .nyra-ruled-panel::-webkit-scrollbar-button,
+.nyra-ruled-controls .nyra-ruled-panel::-webkit-scrollbar-button:single-button,
+.nyra-ruled-controls .nyra-ruled-panel::-webkit-scrollbar-button:vertical:decrement,
+.nyra-ruled-controls .nyra-ruled-panel::-webkit-scrollbar-button:vertical:increment,
+.nyra-ruled-controls .nyra-ruled-panel::-webkit-scrollbar-button:horizontal:decrement,
+.nyra-ruled-controls .nyra-ruled-panel::-webkit-scrollbar-button:horizontal:increment {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  display: none !important;
+  width: 0 !important;
+  min-width: 0 !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.nyra-ruled-panel-header {
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+  margin: 0 0 10px !important;
+}
+.nyra-ruled-panel-heading {
+  min-width: 0 !important;
+  padding-top: 1px !important;
+}
+.nyra-ruled-panel-title {
+  color: var(--nr-fg) !important;
+  font-size: 13.5px !important;
+  font-weight: 750 !important;
+}
+.nyra-ruled-panel-subtitle {
+  margin-top: 2px !important;
+  color: var(--nr-muted) !important;
+  font-size: 10.5px !important;
+  line-height: 1.35 !important;
+}
+
+.nyra-summary-compact {
+  display: none !important;
+}

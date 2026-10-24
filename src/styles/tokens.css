@@ -1,0 +1,74 @@
+.nyra-ruled-controls,
+.nyra-settings-screen {
+  --nr-bg: var(--background-primary, #fbfbfc);
+  --nr-bg-raised: rgba(251, 251, 252, 0.97);
+  --nr-bg-raised: color-mix(in srgb, var(--background-primary, #fbfbfc) 97%, transparent);
+  --nr-surface: var(--background-secondary, #f4f5f7);
+  --nr-surface-2: var(--background-secondary-alt, #eceef2);
+  --nr-surface-3: var(--background-modifier-hover, #e3e6eb);
+  --nr-hover: var(--background-modifier-hover, #eceef2);
+  --nr-fg: var(--text-normal, #17191d);
+  --nr-muted: var(--text-muted, #626976);
+  --nr-subtle: var(--text-faint, #8b919b);
+  --nr-disabled: var(--text-faint, #a6abb3);
+  --nr-border: var(--background-modifier-border, rgba(20, 24, 31, 0.12));
+  --nr-border-strong: var(--background-modifier-border-hover, rgba(20, 24, 31, 0.2));
+  --nr-accent: var(--interactive-accent, #6f59d9);
+  --nr-accent-soft: rgba(111, 89, 217, 0.14);
+  --nr-accent-soft: color-mix(in srgb, var(--interactive-accent, #6f59d9) 14%, transparent);
+  --nr-focus: rgba(111, 89, 217, 0.3);
+  --nr-focus: color-mix(in srgb, var(--interactive-accent, #6f59d9) 30%, transparent);
+  --nr-danger: var(--text-error, #c23d4d);
+  --nr-shadow: var(--shadow-s, 0 18px 48px rgba(15, 20, 28, 0.16), 0 2px 9px rgba(15, 20, 28, 0.08));
+  /* Scrollbars intentionally use the same accent family as the rest of Nyra.
+     Fallbacks precede color-mix() for older WebViews/Electron builds. */
+  --nr-scrollbar-thumb: rgba(111, 89, 217, 0.58);
+  --nr-scrollbar-thumb: color-mix(in srgb, var(--interactive-accent, #6f59d9) 58%, transparent);
+  --nr-scrollbar-thumb-hover: rgba(111, 89, 217, 0.78);
+  --nr-scrollbar-thumb-hover: color-mix(in srgb, var(--interactive-accent, #6f59d9) 78%, transparent);
+  --nr-scrollbar-thumb-active: rgba(111, 89, 217, 0.94);
+  --nr-scrollbar-thumb-active: color-mix(in srgb, var(--interactive-accent, #6f59d9) 94%, transparent);
+  --nyra-panel-max-height: 560px;
+}
+
+.nyra-ruled-controls[data-ui-theme="dark"],
+.theme-dark .nyra-settings-screen {
+  --nr-bg: var(--background-primary, #1d1f23);
+  --nr-bg-raised: rgba(29, 31, 35, 0.97);
+  --nr-bg-raised: color-mix(in srgb, var(--background-primary, #1d1f23) 97%, transparent);
+  --nr-surface: var(--background-secondary, #25282e);
+  --nr-surface-2: var(--background-secondary-alt, #2d3138);
+  --nr-surface-3: var(--background-modifier-hover, #373b44);
+  --nr-hover: var(--background-modifier-hover, #30343c);
+  --nr-fg: var(--text-normal, #f2f4f7);
+  --nr-muted: var(--text-muted, #b0b6c0);
+  --nr-subtle: var(--text-faint, #888f9b);
+  --nr-disabled: var(--text-faint, #6d7480);
+  --nr-border: var(--background-modifier-border, rgba(255, 255, 255, 0.1));
+  --nr-border-strong: var(--background-modifier-border-hover, rgba(255, 255, 255, 0.17));
+  --nr-accent: var(--interactive-accent, #aa96ff);
+  --nr-accent-soft: rgba(170, 150, 255, 0.16);
+  --nr-accent-soft: color-mix(in srgb, var(--interactive-accent, #aa96ff) 16%, transparent);
+  --nr-focus: rgba(170, 150, 255, 0.3);
+  --nr-focus: color-mix(in srgb, var(--interactive-accent, #aa96ff) 30%, transparent);
+  --nr-danger: var(--text-error, #ff7f8b);
+  --nr-shadow: var(--shadow-s, 0 20px 54px rgba(0, 0, 0, 0.42), 0 3px 12px rgba(0, 0, 0, 0.24));
+  --nr-scrollbar-thumb: rgba(170, 150, 255, 0.56);
+  --nr-scrollbar-thumb: color-mix(in srgb, var(--interactive-accent, #aa96ff) 56%, transparent);
+  --nr-scrollbar-thumb-hover: rgba(170, 150, 255, 0.78);
+  --nr-scrollbar-thumb-hover: color-mix(in srgb, var(--interactive-accent, #aa96ff) 78%, transparent);
+  --nr-scrollbar-thumb-active: rgba(170, 150, 255, 0.94);
+  --nr-scrollbar-thumb-active: color-mix(in srgb, var(--interactive-accent, #aa96ff) 94%, transparent);
+}
+
+.nyra-visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
